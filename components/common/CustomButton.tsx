@@ -1,4 +1,6 @@
+import { globalState } from "@/store/globalState";
 import React from "react";
+import { useSnapshot } from "valtio";
 
 interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,14 +13,23 @@ const CustomButton = ({
   children,
   ...buttonProps
 }: CustomButtonProps) => {
-  const backgroundTypeClass =
-    backgroundType === "filled"
-      ? `text-white bg-black`
-      : "bg-white border-black border";
+  const state = useSnapshot(globalState);
+
+  const generateStyle = (type: CustomButtonProps["backgroundType"]) =>
+    type === "filled"
+      ? {
+          backgroundColor: state.themeColor,
+          color: "#fff",
+        }
+      : {
+          border: `1px solid ${state.themeColor}`,
+          color: state.themeColor,
+        };
 
   return (
     <button
-      className={`flex-1 rounded-md ${className} ${backgroundTypeClass}`}
+      className={`flex-1 rounded-md ${className}`}
+      style={generateStyle(backgroundType)}
       {...buttonProps}
     >
       {children}
