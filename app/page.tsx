@@ -1,7 +1,11 @@
-import React from "react";
+import AnimateSection from "@/components/home/AnimateSection";
 
 const Home = () => {
-  return <div></div>;
+  return (
+    <main className="app transition-all ease-in">
+      <AnimateSection />
+    </main>
+  );
 };
 
 export default Home;
