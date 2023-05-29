@@ -1,6 +1,9 @@
 import { AnimationProps } from "framer-motion";
 
-export const transition = { type: "spring", duration: 0.8 };
+export const transition: AnimationProps["transition"] = {
+  type: "spring",
+  duration: 0.8,
+};
 
 type SlideDirection = "left" | "right" | "up" | "down";
 
@@ -24,14 +27,14 @@ export const slideAnimation = (direction: SlideDirection): AnimationProps => {
   };
 };
 
-export const headContainerAnimation: AnimationProps = {
+export const heroContainerAnimation: AnimationProps = {
   initial: { x: -100, opacity: 0 },
   animate: { x: 0, opacity: 1 },
   exit: { x: -100, opacity: 0 },
   transition,
 };
 
-export const headTextAnimation: AnimationProps = {
+export const heroTitleAnimation: AnimationProps = {
   initial: { x: 100, opacity: 0 },
   animate: { x: 0, opacity: 1 },
   transition: {
@@ -43,7 +46,7 @@ export const headTextAnimation: AnimationProps = {
   },
 };
 
-export const headContentAnimation: AnimationProps = {
+export const heroContentAnimation: AnimationProps = {
   initial: { y: 100, opacity: 0 },
   animate: { y: 0, opacity: 1 },
   transition: {

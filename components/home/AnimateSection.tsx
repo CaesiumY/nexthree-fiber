@@ -2,9 +2,9 @@
 
 import ThreeJs from "@/assets/images/threejs.png";
 import {
-  headContainerAnimation,
-  headContentAnimation,
-  headTextAnimation,
+  heroContainerAnimation,
+  heroContentAnimation,
+  heroTitleAnimation,
   slideAnimation,
 } from "@/utils/motion";
 import { AnimatePresence, motion } from "framer-motion";
@@ -36,15 +36,15 @@ const AnimateSection = () => {
             />
           </motion.header>
 
-          <motion.div className="home-content" {...headContainerAnimation}>
-            <motion.div {...headTextAnimation}>
+          <motion.div className="home-content" {...heroContainerAnimation}>
+            <motion.div {...heroTitleAnimation}>
               <h1 className="head-text">
                 LET&apos;S <br className="hidden xl:block" /> DO IT
               </h1>
             </motion.div>
             <motion.div
               className="flex flex-col gap-5"
-              {...headContentAnimation}
+              {...heroContentAnimation}
             >
               <p className="text-gray-600 max-w-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
