@@ -59,3 +59,16 @@ export const heroContentAnimation: AnimationProps = {
     delayChildren: 0.2,
   },
 };
+
+export const fadeAnimation: AnimationProps = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+  transition,
+};

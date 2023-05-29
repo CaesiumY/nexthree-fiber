@@ -1,9 +1,11 @@
-import AnimateSection from "@/components/home/AnimateSection";
+import HeroSection from "@/components/home/HeroSection";
+import UISection from "@/components/home/UISection";
 
 const Home = () => {
   return (
     <main className="app transition-all ease-in">
-      <AnimateSection />
+      <HeroSection />
+      <UISection />
     </main>
   );
 };
