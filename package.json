@@ -29,5 +29,8 @@
     "three": "^0.152.2",
     "typescript": "5.0.4",
     "valtio": "^1.10.5"
+  },
+  "devDependencies": {
+    "@types/three": "^0.152.1"
   }
 }
