@@ -2,11 +2,11 @@ import { proxy } from "valtio";
 
 export const canvasState = proxy({
   logoTexture: {
-    active: false,
-    decal: "",
+    active: true,
+    decal: "/texture/threejs.png",
   },
   fullTexture: {
     active: false,
-    decal: "",
+    decal: "/texture/threejs.png",
   },
 });

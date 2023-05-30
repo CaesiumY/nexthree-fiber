@@ -4,7 +4,10 @@ Command: npx gltfjsx@6.2.3 -t shirt_baked.glb
 */
 
 import { canvasState } from "@/store/canvasState";
-import { useGLTF } from "@react-three/drei";
+import { globalState } from "@/store/globalState";
+import { Decal, useGLTF, useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { dampC } from "maath/easing";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
 import { useSnapshot } from "valtio";
@@ -18,21 +21,42 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function ShirtModel(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/model/shirt_baked.glb") as GLTFResult;
+const shirtBakedSrc = "/model/shirt_baked.glb";
 
-  const state = useSnapshot(canvasState);
-  const logoTextureState = state.logoTexture;
-  const fullTextureState = state.fullTexture;
+export function ShirtModel(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(shirtBakedSrc) as GLTFResult;
+
+  const { logoTexture, fullTexture } = useSnapshot(canvasState);
+  const globalSnap = useSnapshot(globalState);
+
+  const logoTextureMap = useTexture(logoTexture.decal);
+  const fullTextureMap = useTexture(fullTexture.decal);
+
+  useFrame((_state, delta) =>
+    dampC(materials.lambert1.color, globalSnap.themeColor, 0.25, delta)
+  );
 
   return (
     <group {...props} dispose={null}>
       <mesh
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
-      />
+      >
+        {logoTexture.active ? (
+          <Decal
+            map={logoTextureMap}
+            scale={0.15}
+            position={[0, 0.05, 0.15]}
+            map-anisotrophy={16}
+            depthTest={false}
+            depthWrite={true}
+          />
+        ) : null}
+
+        {fullTexture.active ? <Decal map={fullTextureMap} /> : null}
+      </mesh>
     </group>
   );
 }
 
-useGLTF.preload("/shirt_baked.glb");
+useGLTF.preload(shirtBakedSrc);
