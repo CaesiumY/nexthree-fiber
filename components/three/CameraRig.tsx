@@ -11,6 +11,8 @@ const CameraRig = ({ children }: PropsWithChildren) => {
   const isCustomizer = searchParams.get("main") === "customizer";
 
   useFrame(({ camera, pointer }, delta) => {
+    const isTablet =
+      !isCustomizer && typeof window && window.innerWidth <= 1440;
     const isMobile = !isCustomizer && typeof window && window.innerWidth <= 600;
 
     // ternary operator is not an option for clean code
@@ -20,10 +22,13 @@ const CameraRig = ({ children }: PropsWithChildren) => {
       targetPosition = [0, 0, 2];
     }
 
+    if (isTablet) {
+      targetPosition = [Math.min(0, window.innerWidth / -4800), 0, 2];
+    }
+
     if (isMobile) {
       targetPosition = [0, 0.2, 2.5];
     }
-
     damp3(camera.position, targetPosition, 0.25, delta);
 
     dampE(
