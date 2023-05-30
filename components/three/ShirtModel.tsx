@@ -41,6 +41,9 @@ export function ShirtModel(props: JSX.IntrinsicElements["group"]) {
       <mesh
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
+        castShadow
+        material-roughness={1}
+        dispose={null}
       >
         {logoTexture.active ? (
           <Decal
