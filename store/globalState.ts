@@ -7,6 +7,6 @@ interface GlobalState {
 }
 
 export const globalState = proxy<GlobalState>({
-  themeColor: "#EFBD48",
+  themeColor: "#3498db",
   activePicker: null,
 });
