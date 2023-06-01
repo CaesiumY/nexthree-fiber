@@ -1,32 +1,37 @@
-import { ReactNode } from "react";
+import { ImageProps } from "next/image";
+import AIFile from "../assets/svg/ai-file.svg";
+import ColorPalette from "../assets/svg/color-palette.svg";
+import FolderBackground from "../assets/svg/folder-background.svg";
+import Folder from "../assets/svg/folder.svg";
+import TransparentBackground from "../assets/svg/transparent-background.svg";
 
-export interface TabItem {
+export interface TabItemType {
   name: string;
-  icon: ReactNode;
+  icon: ImageProps["src"];
 }
 
-export const EditorTabs: TabItem[] = [
+export const EditorTabs: TabItemType[] = [
   {
     name: "colorpicker",
-    icon: "swatch",
+    icon: ColorPalette,
   },
   {
     name: "filepicker",
-    icon: "fileIcon",
+    icon: Folder,
   },
   {
     name: "aipicker",
-    icon: "ai",
+    icon: AIFile,
   },
 ];
 
-export const FilterTabs: TabItem[] = [
+export const FilterTabs: TabItemType[] = [
   {
     name: "logoShirt",
-    icon: "logoShirt",
+    icon: TransparentBackground,
   },
   {
     name: "stylishShirt",
-    icon: "stylishShirt",
+    icon: FolderBackground,
   },
 ];

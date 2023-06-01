@@ -1,15 +1,16 @@
-import { TabItem } from "@/constants/tabs";
+import { TabItemType } from "@/constants/tabs";
 import { HTMLMotionProps, motion } from "framer-motion";
+import TabItem from "./TabItem";
 
 interface CustomTabProps extends HTMLMotionProps<"div"> {
-  tabItems: TabItem[];
+  tabItems: TabItemType[];
 }
 
 const CustomTab = ({ tabItems, ...props }: CustomTabProps) => {
   return (
     <motion.div {...props}>
-      {tabItems.map((tab) => (
-        <span key={tab.name}>{tab.name}</span>
+      {tabItems.map((tabData) => (
+        <TabItem key={tabData.name} data={tabData} />
       ))}
     </motion.div>
   );
