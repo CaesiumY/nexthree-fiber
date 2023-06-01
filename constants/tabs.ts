@@ -4,28 +4,31 @@ import ColorPalette from "../assets/svg/color-palette.svg";
 import FolderBackground from "../assets/svg/folder-background.svg";
 import Folder from "../assets/svg/folder.svg";
 import TransparentBackground from "../assets/svg/transparent-background.svg";
+import { ArrayPropertyValues } from "@/utils/utilTypes";
 
 export interface TabItemType {
-  name: string;
+  name: EditorTabNames | FilterTabNames;
   icon: ImageProps["src"];
 }
 
-export const EditorTabs: TabItemType[] = [
+export const EditorTabs = [
   {
-    name: "colorpicker",
+    name: "colorPicker",
     icon: ColorPalette,
   },
   {
-    name: "filepicker",
+    name: "filePicker",
     icon: Folder,
   },
   {
-    name: "aipicker",
+    name: "aiPicker",
     icon: AIFile,
   },
-];
+] as const;
 
-export const FilterTabs: TabItemType[] = [
+export type EditorTabNames = ArrayPropertyValues<typeof EditorTabs, "name">;
+
+export const FilterTabs = [
   {
     name: "logoShirt",
     icon: TransparentBackground,
@@ -34,4 +37,6 @@ export const FilterTabs: TabItemType[] = [
     name: "stylishShirt",
     icon: FolderBackground,
   },
-];
+] as const;
+
+export type FilterTabNames = ArrayPropertyValues<typeof FilterTabs, "name">;

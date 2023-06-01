@@ -1,17 +1,22 @@
 import { TabItemType } from "@/constants/tabs";
 import Image from "next/image";
 
-interface TabItemProps {
+interface TabItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   data: TabItemType;
   isActive?: boolean;
-  onClick?: () => void;
 }
 
-const TabItem = ({ data, onClick, isActive = false }: TabItemProps) => {
+const TabItem = ({
+  data,
+  onClick,
+  isActive = false,
+  ...props
+}: TabItemProps) => {
   const { name, icon } = data;
 
   return (
     <button
+      {...props}
       className={`p-2 hover:backdrop-brightness-50 rounded-md ${
         isActive ? "backdrop-brightness-50" : ""
       }`}
