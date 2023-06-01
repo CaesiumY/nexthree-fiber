@@ -1,6 +1,7 @@
 import { EditorTabNames } from "@/constants/tabs";
 import React, { ReactNode } from "react";
 import ColorPicker from "./ColorPicker";
+import FilePicker from "./FilePicker";
 
 type PickerTableType = {
   [key in EditorTabNames]: ReactNode;
@@ -8,8 +9,8 @@ type PickerTableType = {
 
 const PickerTable: PickerTableType = {
   colorPicker: <ColorPicker />,
+  filePicker: <FilePicker />,
   aiPicker: <div>AI Picker</div>,
-  filePicker: <div>File Picker</div>,
 };
 
 interface PickerContainerProps {

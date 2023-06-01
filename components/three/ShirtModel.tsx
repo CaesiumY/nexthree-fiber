@@ -49,7 +49,8 @@ export function ShirtModel(props: JSX.IntrinsicElements["group"]) {
           <Decal
             map={logoTextureMap}
             scale={0.15}
-            position={[0, 0.05, 0.15]}
+            position={[0, 0.04, 0.15]}
+            rotation={[0, 0, 0]}
             map-anisotrophy={16}
             depthTest={false}
             depthWrite={true}

@@ -24,12 +24,12 @@ const CustomButton = ({
         }
       : {
           border: `1px solid ${themeColor}`,
-          color: themeColor,
+          color: "black",
         };
 
   return (
     <button
-      className={`flex-1 rounded-md ${className}`}
+      className={`flex-1 rounded-md hover:brightness-90 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
       style={generateStyle(backgroundType)}
       {...buttonProps}
     >

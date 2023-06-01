@@ -26,6 +26,14 @@
   @apply fixed z-10 bottom-5 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
+.filepicker-container {
+  @apply absolute left-full top-0 ml-4 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
+}
+
+.filepicker-label {
+  @apply border border-gray-300 py-1.5 px-2 rounded-md shadow-sm text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 cursor-pointer w-full;
+}
+
 .glassmorphism {
   background: rgba(0, 0, 0, 0.125);
   box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07);
