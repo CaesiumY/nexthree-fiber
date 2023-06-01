@@ -9,16 +9,14 @@ import {
 } from "@/utils/motion";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import CustomButton from "../common/CustomButton";
 
 const AnimateSection = () => {
-  const { push } = useRouter();
   const searchParams = useSearchParams();
 
   const isIntro = searchParams.get("main") !== "customizer";
-
-  const OnClickButton = () => push("?main=customizer");
 
   return (
     // only check for direct children
@@ -52,13 +50,14 @@ const AnimateSection = () => {
                 Quisquam voluptatum, voluptate, quibusdam, quia voluptas quod
                 quos voluptatem quas quidem doloribus quae.
               </p>
-              <CustomButton
-                backgroundType="filled"
-                onClick={OnClickButton}
-                className="px-4 py-2 font-bold text-sm w-fit"
-              >
-                Customize It!
-              </CustomButton>
+              <Link href={"?main=customizer"}>
+                <CustomButton
+                  backgroundType="filled"
+                  className="px-4 py-2 font-bold text-sm w-fit"
+                >
+                  Customize It!
+                </CustomButton>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.section>

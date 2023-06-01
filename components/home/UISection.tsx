@@ -3,15 +3,12 @@
 import { EditorTabs, FilterTabs } from "@/constants/tabs";
 import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import CustomButton from "../common/CustomButton";
 
 const UISection = () => {
-  const { push } = useRouter();
   const searchParams = useSearchParams();
-
-  const onClickButtonGoBack = () => push("/");
 
   const isCustomizer = searchParams.get("main") === "customizer";
 
@@ -32,12 +29,11 @@ const UISection = () => {
           </motion.div>
 
           <motion.div className="fixed top-5 right-5 z-10" {...fadeAnimation}>
-            <CustomButton
-              className="px-4 py-2 font-bold text-sm"
-              onClick={onClickButtonGoBack}
-            >
-              Go Back
-            </CustomButton>
+            <Link href={"/"}>
+              <CustomButton className="px-4 py-2 font-bold text-sm">
+                Go Back
+              </CustomButton>
+            </Link>
           </motion.div>
 
           <motion.div
