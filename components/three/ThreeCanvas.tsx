@@ -1,33 +1,39 @@
 "use client";
 
-import { Environment, Center } from "@react-three/drei";
+import { Center, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React from "react";
-import { ShirtModel } from "./ShirtModel";
-import CameraRig from "./CameraRig";
+import { Suspense } from "react";
 import BackdropLight from "./BackdropLight";
+import CameraRig from "./CameraRig";
+import { ShirtModel } from "./ShirtModel";
 
 const ThreeCanvas = () => {
   return (
-    <Canvas
-      shadows
-      camera={{
-        fov: 25,
-      }}
-      gl={{
-        preserveDrawingBuffer: true,
-      }}
-    >
-      <ambientLight intensity={0.5} />
-      <Environment preset="city" />
+    <>
+      <Canvas
+        shadows
+        camera={{
+          fov: 25,
+        }}
+        gl={{
+          preserveDrawingBuffer: true,
+        }}
+      >
+        <Suspense>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} intensity={0.75} />
+          {/* <Environment preset="city" /> */}
 
-      <CameraRig>
-        <BackdropLight />
-        <Center>
-          <ShirtModel />
-        </Center>
-      </CameraRig>
-    </Canvas>
+          <CameraRig>
+            <BackdropLight />
+            <Center>
+              <ShirtModel />
+            </Center>
+          </CameraRig>
+        </Suspense>
+      </Canvas>
+      <Loader />
+    </>
   );
 };
 
