@@ -1,6 +1,12 @@
 "use client";
 
-import { EditorTabNames, EditorTabs, FilterTabs } from "@/constants/tabs";
+import {
+  EditorTabNames,
+  EditorTabs,
+  FilterTabNames,
+  FilterTabs,
+} from "@/constants/tabs";
+import { canvasState } from "@/store/canvasState";
 import { globalState } from "@/store/globalState";
 import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { motion } from "framer-motion";
@@ -12,10 +18,20 @@ import PickerContainer from "../picker/PickerContainer";
 
 const UISection = () => {
   const { activePicker } = useSnapshot(globalState);
+  const canvasSnap = useSnapshot(canvasState);
 
   const onChangePicker = (tabName: string) => {
     globalState.activePicker = tabName as EditorTabNames;
   };
+
+  const onChangeFilter = (tabName: string) => {
+    canvasState[tabName as FilterTabNames].active =
+      !canvasState[tabName as FilterTabNames].active;
+  };
+
+  const activeFilterTabs = Object.keys(canvasSnap).filter(
+    (tabName) => canvasSnap[tabName as FilterTabNames].active
+  );
 
   return (
     <section>
@@ -44,6 +60,8 @@ const UISection = () => {
       <CustomTab
         className="filtertabs-container"
         tabItems={FilterTabs}
+        onChangeTabItem={onChangeFilter}
+        activeTabs={activeFilterTabs}
         {...slideAnimation("up")}
       />
     </section>

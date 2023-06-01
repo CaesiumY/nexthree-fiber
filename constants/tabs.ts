@@ -30,11 +30,11 @@ export type EditorTabNames = ArrayPropertyValues<typeof EditorTabs, "name">;
 
 export const FilterTabs = [
   {
-    name: "logoShirt",
+    name: "logoTexture",
     icon: TransparentBackground,
   },
   {
-    name: "stylishShirt",
+    name: "fullTexture",
     icon: FolderBackground,
   },
 ] as const;

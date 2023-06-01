@@ -6,12 +6,14 @@ interface CustomTabProps extends HTMLMotionProps<"div"> {
   tabItems: readonly TabItemType[];
   onChangeTabItem?: (tabName: TabItemType["name"]) => void;
   activeTab?: TabItemType["name"] | null;
+  activeTabs?: TabItemType["name"][];
 }
 
 const CustomTab = ({
   tabItems,
   onChangeTabItem,
   activeTab = null,
+  activeTabs = [],
   ...props
 }: CustomTabProps) => {
   return (
@@ -21,7 +23,9 @@ const CustomTab = ({
           key={tabData.name}
           data={tabData}
           onClick={() => onChangeTabItem?.(tabData.name)}
-          isActive={activeTab === tabData.name}
+          isActive={
+            activeTab === tabData.name || activeTabs.includes(tabData.name)
+          }
         />
       ))}
     </motion.div>
