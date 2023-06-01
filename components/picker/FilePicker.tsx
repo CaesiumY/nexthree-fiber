@@ -23,7 +23,7 @@ const FilePicker = () => {
   };
 
   return (
-    <div className="filepicker-container">
+    <div className="picker-container">
       <div className="flex-1 flex flex-col gap-2">
         <input
           type="file"

@@ -1,5 +1,6 @@
 import { EditorTabNames } from "@/constants/tabs";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
+import AiPicker from "./AiPicker";
 import ColorPicker from "./ColorPicker";
 import FilePicker from "./FilePicker";
 
@@ -10,7 +11,7 @@ type PickerTableType = {
 const PickerTable: PickerTableType = {
   colorPicker: <ColorPicker />,
   filePicker: <FilePicker />,
-  aiPicker: <div>AI Picker</div>,
+  aiPicker: <AiPicker />,
 };
 
 interface PickerContainerProps {
