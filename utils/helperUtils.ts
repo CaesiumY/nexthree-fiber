@@ -5,7 +5,7 @@ export const readFile = (file: Blob): Promise<string> =>
     fileReader.onload = () => resolve(fileReader.result as string);
   });
 
-export const downloadCanvasToImage = () => {
+export const downloadCanvasToImage = (name = "canvas") => {
   const canvas = document.querySelector("canvas");
   if (!canvas) return;
 
@@ -13,6 +13,6 @@ export const downloadCanvasToImage = () => {
   const link = document.createElement("a");
 
   link.href = dataURL;
-  link.download = "canvas.png";
+  link.download = `${name}.png`;
   link.click();
 };

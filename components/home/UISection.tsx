@@ -76,7 +76,10 @@ const UISection = () => {
       />
 
       <motion.div className="actiontabs-container" {...slideAnimation("down")}>
-        <TabItem data={ActionTabs[0]} onClick={downloadCanvasToImage} />
+        <TabItem
+          data={ActionTabs[0]}
+          onClick={() => downloadCanvasToImage(activeModel)}
+        />
       </motion.div>
 
       <CustomTab

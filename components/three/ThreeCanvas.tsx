@@ -27,7 +27,7 @@ const ThreeCanvas = () => {
         }}
         onClick={onClickCanvas}
       >
-        <OrbitControls enablePan={false} />
+        {/* <OrbitControls enablePan={false} /> */}
 
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
