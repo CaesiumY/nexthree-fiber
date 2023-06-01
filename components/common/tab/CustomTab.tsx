@@ -1,4 +1,4 @@
-import { EditorTabNames, TabItemType } from "@/constants/tabs";
+import { TabItemType } from "@/constants/tabs";
 import { HTMLMotionProps, motion } from "framer-motion";
 import TabItem from "./TabItem";
 

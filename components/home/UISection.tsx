@@ -1,18 +1,19 @@
 "use client";
 
-import { EditorTabs, FilterTabs, TabItemType } from "@/constants/tabs";
+import { EditorTabNames, EditorTabs, FilterTabs } from "@/constants/tabs";
 import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import CustomButton from "../common/CustomButton";
 import CustomTab from "../common/tab/CustomTab";
+import PickerContainer from "../picker/PickerContainer";
 
 const UISection = () => {
-  const [activeTab, setActiveTab] = useState<TabItemType["name"] | null>(null);
+  const [activePicker, setActivePicker] = useState<EditorTabNames | null>(null);
 
-  const onChangePicker = (tabName: TabItemType["name"]) => {
-    setActiveTab(tabName);
+  const onChangePicker = (tabName: string) => {
+    setActivePicker(tabName as EditorTabNames);
   };
 
   return (
@@ -27,6 +28,7 @@ const UISection = () => {
           tabItems={EditorTabs}
           onChangeTabItem={onChangePicker}
         />
+        {activePicker ? <PickerContainer activePicker={activePicker} /> : null}
       </motion.div>
 
       <motion.div className="fixed top-5 right-5 z-10" {...fadeAnimation}>

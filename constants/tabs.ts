@@ -1,13 +1,13 @@
+import { ArrayPropertyValues } from "@/utils/utilTypes";
 import { ImageProps } from "next/image";
 import AIFile from "../assets/svg/ai-file.svg";
 import ColorPalette from "../assets/svg/color-palette.svg";
 import FolderBackground from "../assets/svg/folder-background.svg";
 import Folder from "../assets/svg/folder.svg";
 import TransparentBackground from "../assets/svg/transparent-background.svg";
-import { ArrayPropertyValues } from "@/utils/utilTypes";
 
 export interface TabItemType {
-  name: EditorTabNames | FilterTabNames;
+  name: string;
   icon: ImageProps["src"];
 }
 
