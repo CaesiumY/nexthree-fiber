@@ -26,6 +26,10 @@
   @apply fixed z-10 bottom-5 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
+.actiontabs-container {
+  @apply fixed z-10 bottom-5 right-5 w-fit flex justify-center items-center flex-wrap gap-4;
+}
+
 .picker-container {
   @apply absolute left-full top-0 ml-4 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
 }

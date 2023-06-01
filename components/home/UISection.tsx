@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ActionTabs,
   EditorTabNames,
   EditorTabs,
   FilterTabNames,
@@ -8,12 +9,14 @@ import {
 } from "@/constants/tabs";
 import { canvasState } from "@/store/canvasState";
 import { globalState } from "@/store/globalState";
+import { downloadCanvasToImage } from "@/utils/helperUtils";
 import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSnapshot } from "valtio";
 import CustomButton from "../common/CustomButton";
 import CustomTab from "../common/tab/CustomTab";
+import TabItem from "../common/tab/TabItem";
 import PickerContainer from "../picker/PickerContainer";
 
 const UISection = () => {
@@ -46,10 +49,11 @@ const UISection = () => {
           onChangeTabItem={onChangePicker}
           activeTab={activePicker}
         />
+
         {activePicker ? <PickerContainer activePicker={activePicker} /> : null}
       </motion.div>
 
-      <motion.div className="fixed top-5 right-5 z-10" {...fadeAnimation}>
+      <motion.div className="fixed top-5 right-5 z-20" {...fadeAnimation}>
         <Link href={"/"}>
           <CustomButton className="px-4 py-2 font-bold text-sm">
             Go Back
@@ -64,6 +68,10 @@ const UISection = () => {
         activeTabs={activeFilterTabs}
         {...slideAnimation("up")}
       />
+
+      <motion.div className="actiontabs-container" {...slideAnimation("down")}>
+        <TabItem data={ActionTabs[0]} onClick={downloadCanvasToImage} />
+      </motion.div>
     </section>
   );
 };
