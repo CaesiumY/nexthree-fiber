@@ -1,19 +1,20 @@
 "use client";
 
 import { EditorTabNames, EditorTabs, FilterTabs } from "@/constants/tabs";
+import { globalState } from "@/store/globalState";
 import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useSnapshot } from "valtio";
 import CustomButton from "../common/CustomButton";
 import CustomTab from "../common/tab/CustomTab";
 import PickerContainer from "../picker/PickerContainer";
 
 const UISection = () => {
-  const [activePicker, setActivePicker] = useState<EditorTabNames | null>(null);
+  const { activePicker } = useSnapshot(globalState);
 
   const onChangePicker = (tabName: string) => {
-    setActivePicker(tabName as EditorTabNames);
+    globalState.activePicker = tabName as EditorTabNames;
   };
 
   return (
@@ -27,6 +28,7 @@ const UISection = () => {
           className="editortabs-container p-2"
           tabItems={EditorTabs}
           onChangeTabItem={onChangePicker}
+          activeTab={activePicker}
         />
         {activePicker ? <PickerContainer activePicker={activePicker} /> : null}
       </motion.div>
