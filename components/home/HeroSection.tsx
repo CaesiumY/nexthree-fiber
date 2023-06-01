@@ -28,8 +28,8 @@ const HeroSection = () => {
 
       <motion.div className="home-content" {...heroContainerAnimation}>
         <motion.div {...heroTitleAnimation}>
-          <h1 className="head-text">
-            LET&apos;S <br className="hidden xl:block" /> DO IT
+          <h1 className="head-text break-keep">
+            To The <br className="xl:block hidden" /> World!
           </h1>
         </motion.div>
         <motion.div className="flex flex-col gap-5" {...heroContentAnimation}>
