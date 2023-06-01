@@ -1,4 +1,5 @@
 import { globalState } from "@/store/globalState";
+import { getContrastColor } from "@/utils/colorUtils";
 import React from "react";
 import { useSnapshot } from "valtio";
 
@@ -13,17 +14,17 @@ const CustomButton = ({
   children,
   ...buttonProps
 }: CustomButtonProps) => {
-  const state = useSnapshot(globalState);
+  const { themeColor } = useSnapshot(globalState);
 
   const generateStyle = (type: CustomButtonProps["backgroundType"]) =>
     type === "filled"
       ? {
-          backgroundColor: state.themeColor,
-          color: "#fff",
+          backgroundColor: themeColor,
+          color: getContrastColor(themeColor),
         }
       : {
-          border: `1px solid ${state.themeColor}`,
-          color: state.themeColor,
+          border: `1px solid ${themeColor}`,
+          color: themeColor,
         };
 
   return (

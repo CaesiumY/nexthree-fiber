@@ -1,4 +1,4 @@
-import { ArrayPropertyValues } from "@/utils/utilTypes";
+import { ArrayPropertyValues } from "@/utils/typeUtils";
 import { ImageProps } from "next/image";
 import AIFile from "../assets/svg/ai-file.svg";
 import ColorPalette from "../assets/svg/color-palette.svg";
