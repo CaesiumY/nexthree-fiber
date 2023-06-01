@@ -1,4 +1,11 @@
-export const EditorTabs = [
+import { ReactNode } from "react";
+
+export interface TabItem {
+  name: string;
+  icon: ReactNode;
+}
+
+export const EditorTabs: TabItem[] = [
   {
     name: "colorpicker",
     icon: "swatch",
@@ -13,7 +20,7 @@ export const EditorTabs = [
   },
 ];
 
-export const FilterTabs = [
+export const FilterTabs: TabItem[] = [
   {
     name: "logoShirt",
     icon: "logoShirt",

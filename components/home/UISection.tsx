@@ -5,6 +5,7 @@ import { fadeAnimation, slideAnimation } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import CustomButton from "../common/CustomButton";
+import CustomTab from "../common/CustomTab";
 
 const UISection = () => {
   return (
@@ -14,11 +15,7 @@ const UISection = () => {
         {...slideAnimation("left")}
         animate={{ x: 0, y: "-50%", opacity: 1 }}
       >
-        <div className="editortabs-container">
-          {EditorTabs.map((tab) => (
-            <span key={tab.name}>{tab.name}</span>
-          ))}
-        </div>
+        <CustomTab className="editortabs-container" tabItems={EditorTabs} />
       </motion.div>
 
       <motion.div className="fixed top-5 right-5 z-10" {...fadeAnimation}>
@@ -29,11 +26,11 @@ const UISection = () => {
         </Link>
       </motion.div>
 
-      <motion.div className="filtertabs-container" {...slideAnimation("up")}>
-        {FilterTabs.map((tab) => (
-          <span key={tab.name}>{tab.name}</span>
-        ))}
-      </motion.div>
+      <CustomTab
+        className="filtertabs-container"
+        tabItems={FilterTabs}
+        {...slideAnimation("up")}
+      />
     </section>
   );
 };
