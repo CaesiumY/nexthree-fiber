@@ -5,7 +5,9 @@ import Camera from "../assets/svg/camera.svg";
 import ColorPalette from "../assets/svg/color-palette.svg";
 import FolderBackground from "../assets/svg/folder-background.svg";
 import Folder from "../assets/svg/folder.svg";
+import Shirt from "../assets/svg/shirt.svg";
 import TransparentBackground from "../assets/svg/transparent-background.svg";
+import Yarcht from "../assets/svg/yacht.svg";
 
 export interface TabItemType {
   name: string;
@@ -50,3 +52,16 @@ export const ActionTabs = [
 ] as const;
 
 export type ActionTabNames = ArrayPropertyValues<typeof ActionTabs, "name">;
+
+export const ModelTabs = [
+  {
+    name: "shirt",
+    icon: Shirt,
+  },
+  {
+    name: "yacht",
+    icon: Yarcht,
+  },
+] as const;
+
+export type ModelTabNames = ArrayPropertyValues<typeof ModelTabs, "name">;

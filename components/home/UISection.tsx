@@ -6,6 +6,8 @@ import {
   EditorTabs,
   FilterTabNames,
   FilterTabs,
+  ModelTabNames,
+  ModelTabs,
 } from "@/constants/tabs";
 import { canvasState } from "@/store/canvasState";
 import { globalState } from "@/store/globalState";
@@ -20,7 +22,7 @@ import TabItem from "../common/tab/TabItem";
 import PickerContainer from "../picker/PickerContainer";
 
 const UISection = () => {
-  const { activePicker } = useSnapshot(globalState);
+  const { activePicker, activeModel } = useSnapshot(globalState);
   const canvasSnap = useSnapshot(canvasState);
 
   const onChangePicker = (tabName: string) => {
@@ -30,6 +32,10 @@ const UISection = () => {
   const onChangeFilter = (tabName: string) => {
     canvasState[tabName as FilterTabNames].active =
       !canvasState[tabName as FilterTabNames].active;
+  };
+
+  const onChangeModel = (tabName: string) => {
+    globalState.activeModel = tabName as ModelTabNames;
   };
 
   const activeFilterTabs = Object.keys(canvasSnap).filter(
@@ -72,6 +78,14 @@ const UISection = () => {
       <motion.div className="actiontabs-container" {...slideAnimation("down")}>
         <TabItem data={ActionTabs[0]} onClick={downloadCanvasToImage} />
       </motion.div>
+
+      <CustomTab
+        className="modeltabs-container"
+        tabItems={ModelTabs}
+        onChangeTabItem={onChangeModel}
+        activeTab={activeModel}
+        {...slideAnimation("down")}
+      />
     </section>
   );
 };
