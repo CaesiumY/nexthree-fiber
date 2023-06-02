@@ -1,7 +1,7 @@
 "use client";
 
 import { globalState } from "@/store/globalState";
-import { Center, Loader, OrbitControls } from "@react-three/drei";
+import { Center, Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useSnapshot } from "valtio";
@@ -34,10 +34,19 @@ const ThreeCanvas = () => {
           <pointLight position={[10, 10, 10]} intensity={0.75} />
 
           <CameraRig>
-            <BackdropLight />
             <Center>
-              {activeModel === "shirt" ? <ShirtModel /> : null}
-              {activeModel === "yacht" ? <YachtModel /> : null}
+              {activeModel === "shirt" ? (
+                <>
+                  <BackdropLight />
+                  <ShirtModel />
+                </>
+              ) : null}
+              {activeModel === "yacht" ? (
+                <>
+                  <BackdropLight />
+                  <YachtModel />
+                </>
+              ) : null}
             </Center>
           </CameraRig>
         </Suspense>
