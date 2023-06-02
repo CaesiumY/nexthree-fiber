@@ -30,4 +30,4 @@ const BackdropLight = () => {
   );
 };
 
-export default BackdropLight;
+export default React.memo(BackdropLight);
