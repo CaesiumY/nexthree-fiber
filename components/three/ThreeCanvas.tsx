@@ -7,8 +7,8 @@ import { Suspense } from "react";
 import { useSnapshot } from "valtio";
 import BackdropLight from "./BackdropLight";
 import CameraRig from "./CameraRig";
-import { ShirtModel } from "./ShirtModel";
-import { YachtModel } from "./YachtModel";
+import { ShirtModel } from "./models/ShirtModel";
+import { YachtModel } from "./models/YachtModel";
 
 const ThreeCanvas = () => {
   const { activeModel } = useSnapshot(globalState);
