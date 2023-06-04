@@ -22,6 +22,7 @@ export default function RootLayout({
 export const metadata = {
   title: "R3F & NextJS@13 😊",
   description: "Customize Model with your own style!",
+  metadataBase: new URL("https://r3f-nextjs.vercel.app/"),
   openGraph: {
     type: "website",
     locale: "ko_KR",
